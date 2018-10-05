@@ -26,7 +26,7 @@ body{
 	background-color: #212121;
 	color: #fff;
 	font-family: 'Nunito Semibold';
-    text-align: center;}
+    	text-align: center;}
 
 /*-------------------------
 	css grid
@@ -38,7 +38,7 @@ body{
 	grid-auto-rows: repeat(1fr, 4);
 	margin: 0 auto;
 	align-items: center;
-    justify-items: center;}
+    	justify-items: center;}
     
 /*-------------------------
 	footer
@@ -47,7 +47,7 @@ body{
 .footer {
 	position: fixed;
 	left: 0;
-	bottom: 0;
+	bottom: 10;
 	width: 100%;
 	background-color: #3a3a3a;
 	color: white;
