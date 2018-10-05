@@ -2,24 +2,85 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
 	<title>Clever | Applications</title>
 	<link rel="icon" href="https://clever.com/favicon.ico" type="image/gif" sizes="16x16">
-    	<meta name="bogus541" content="bogus541">
-    	<meta name="bogus541" content="bogus541">
-    	<link rel="stylesheet" href="styles.css">
+	<meta name="bogus541" content="bogus541">
+	<meta name="bogus541" content="bogus541">
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<div id="content">
 		<ul class="snip1217">
 			<li class="current"><a href="#">Home</a></li>
-			<li><a href="#">About Us</a></li>
-			<li><a href="#">Blog</a></li>
-			<li><a href="#">Services</a></li>
-			<li><a href="#">Products</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="#">Github</a></li>
+			<li><a href="#">Multiplayer</a></li>
+			<li><a href="#">WebGL</a></li>
+			<li><a href="#">Other</a></li>
+			<li><a href="#">About</a></li>
 		</ul>
-        <div class="footer">
+		<div class="youtube">
+			<!--Google Video Search-->
+			<h2>Search</h2>
+			<form action="https://www.google.com/search?tbm=vid&q=" class="searchform" method="get" name="searchform" target="_blank">
+				<input name="sitesearch" type="hidden" value="www.youtube.com/watch">
+				<input autocomplete="on" class="form-controls search" name="q" placeholder="Search For A Video" required="required" type="text">
+				<button class="button" type="submit">Search</button>
+			</form>
+			<!--Youtube Form Script-->
+			<script>
+				function process(){
+					var url="https://www.youtube-nocookie.com/embed/" + document.getElementById("url").value; location.href=url; return false;}
+			</script>
+			<!--Youtube Form-->
+			<h2>Watch</h2>
+			<form onSubmit="return process();">
+				<input type="text" name="url" placeholder="Put Code Here" id="url">
+				<input type="submit" value="Watch">
+			</form>
+		</div>
+		<!--TESTING-->
+		<form id="search-term">
+			Entry:<br>
+			<input id="query" type="text">
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+		<div id="search-results"></div>
+		<script>
+			$(document).ready(function () {
+				$('#search-term').submit(function (event) {
+					event.preventDefault();
+					var searchTerm = $('#query').val();
+					getRequest(searchTerm);
+				});
+			});
+			function getRequest(searchTerm) {
+				url = 'https://www.googleapis.com/youtube/v3/search';
+				var params = {
+					part: 'snippet',
+					key: 'AIzaSyBbO9_N46Po8__zk9P-olWwE5RFCFFm5I0',
+					q: searchTerm
+				};
+				$.getJSON(url, params, function (searchTerm) {
+					showResults(searchTerm);
+				});
+			}
+			function showResults(results) {
+				var html = "";
+				var entries = results.items;
+				
+				$.each(entries, function (index, value) {
+					var title = value.snippet.title;
+					var thumbnail = value.snippet.thumbnails.default.url;
+					html += '<p>' + title + '</p>';
+					html += '<img src="' + thumbnail + '">';
+				}); 
+				$('#search-results').html(html);
+			}
+		</script>
+		<!--Footer-->
+		<div class="footer">
 			<p>
 				This site is purely for educational purposes only.
 				I do not condone the use of this site.
