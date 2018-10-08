@@ -40,21 +40,16 @@
 			</form>
 		</div>
 		<!--TESTING-->
-		<form id="search-term">
-			Entry:<br>
-			<input id="query" type="text">
-			<br>
-			<input type="submit" value="Submit">
-		</form>
 		<div id="search-results"></div>
 		<script>
-			$(document).ready(function () {
+			function test() {
 				$('#search-term').submit(function (event) {
 					event.preventDefault();
 					var searchTerm = $('#query').val();
 					getRequest(searchTerm);
 				});
-			});
+			};
+			print("1")
 			function getRequest(searchTerm) {
 				url = 'https://www.googleapis.com/youtube/v3/search';
 				var params = {
@@ -62,6 +57,7 @@
 					key: 'AIzaSyBbO9_N46Po8__zk9P-olWwE5RFCFFm5I0',
 					q: searchTerm
 				};
+				print("2")
 				$.getJSON(url, params, function (searchTerm) {
 					showResults(searchTerm);
 				});
@@ -69,16 +65,22 @@
 			function showResults(results) {
 				var html = "";
 				var entries = results.items;
-				
+				print("3")
 				$.each(entries, function (index, value) {
 					var title = value.snippet.title;
 					var thumbnail = value.snippet.thumbnails.default.url;
 					html += '<p>' + title + '</p>';
 					html += '<img src="' + thumbnail + '">';
-				}); 
+				});
 				$('#search-results').html(html);
 			}
 		</script>
+		<form onSubmin="return showResults(results);" id="search-term">
+			Entry:<br>
+			<input id="query" type="text">
+			<br>
+			<input type="submit" value="Submit">
+		</form>
 		<!--Footer-->
 		<div class="footer">
 			<p>
