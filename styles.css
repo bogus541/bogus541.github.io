@@ -13,11 +13,10 @@
 	body
 --------------------------*/
 
-body{
+body, p, h3{
 	background-color: #212121;
 	color: #fff;
-	font-family: 'Nunito Semibold';
-    text-align: center;}
+	font-family: 'Ubuntu';}
 
 /*-------------------------
 	css grid
@@ -46,6 +45,20 @@ body{
 	font-size: 15px;
 	grid-column: 1/4;
     grid-row: 4;}
+
+/*-------------------------
+	videos
+--------------------------*/
+#videos, #videos p, #videos h3 {
+list-style: none;
+margin:0;
+padding:15;
+}
+
+#videos > li, #videos > li > .image{
+  float:left;
+  margin-right:15px;
+}
 
 /*-------------------------
 	snip1217

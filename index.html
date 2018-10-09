@@ -6,10 +6,11 @@
 	<title>Clever | Applications</title>
 	<link rel="icon" href="https://clever.com/favicon.ico" type="image/gif" sizes="16x16">
 	<meta name="bogus541" content="bogus541">
-	<meta name="bogus541" content="bogus541">
+	<script src="brython.js"></script>
+	<script src="brython_stdlib.js"></script>
 	<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="brython()">
 	<div id="content">
 		<ul class="snip1217">
 			<li class="current"><a href="#">Home</a></li>
@@ -20,67 +21,39 @@
 			<li><a href="#">About</a></li>
 		</ul>
 		<div class="youtube">
-			<!--Google Video Search-->
-			<h2>Search</h2>
-			<form action="https://www.google.com/search?tbm=vid&q=" class="searchform" method="get" name="searchform" target="_blank">
-				<input name="sitesearch" type="hidden" value="www.youtube.com/watch">
-				<input autocomplete="on" class="form-controls search" name="q" placeholder="Search For A Video" required="required" type="text">
-				<button class="button" type="submit">Search</button>
-			</form>
-			<!--Youtube Form Script-->
-			<script>
-				function process(){
-					var url="https://www.youtube-nocookie.com/embed/" + document.getElementById("url").value; location.href=url; return false;}
-			</script>
-			<!--Youtube Form-->
-			<h2>Watch</h2>
-			<form onSubmit="return process();">
-				<input type="text" name="url" placeholder="Put Code Here" id="url">
-				<input type="submit" value="Watch">
-			</form>
+<script type="text/python">
+from browser import document as doc
+from browser import ajax, html
+from urllib.parse import quote
+import json
+def on_complete(req):
+    if req.status==200 or req.status==0:
+        print(req.text)
+        data = req.text
+        cont = json.loads(data)
+        videos = []
+        for video_result in cont.get('items', []):
+            title = video_result['snippet']['title']
+            description = video_result['snippet']['description']
+            id = video_result['id']['videoId']
+            img = video_result['snippet']['thumbnails']['medium']['url']
+            link = f'https://www.youtube-nocookie.com/embed/{id}'
+            videos.append(f'<li><a href="{link}" class="image"><img src="{img}"/></a><div class="content"><a href="{link}"><h3>{title}</h3><p>{description}</p></a></div></li>')
+	doc["main"].html = f'<ul id="videos">{"<br>".join(videos)}</ul>'
+
+def get(url):
+    req = ajax.ajax()
+    req.bind('complete',on_complete)
+    req.open('GET',url,True)
+    req.set_header('content-type','application/x-www-form-urlencoded')
+    req.send()
+def search():
+    get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + quote(input('Search For A Video:')) + '&type=video&key=AIzaSyAqR6xo2RuEiYDjp10UI3dPtiw-q7scJsI&maxResults=10&videoEmbeddable=True')
+doc["main"].html = '<ul class="snip1488" id="search"><li><a type="button" class="search" onclick="search()">Search</a></li></ul>'
+doc["search"].bind("click", search)
+</script>
+<pre id="main"></pre>
 		</div>
-		<!--TESTING-->
-		<div id="search-results"></div>
-		<script>
-			function test() {
-				$('#search-term').submit(function (event) {
-					event.preventDefault();
-					var searchTerm = $('#query').val();
-					getRequest(searchTerm);
-				});
-			};
-			print("1")
-			function getRequest(searchTerm) {
-				url = 'https://www.googleapis.com/youtube/v3/search';
-				var params = {
-					part: 'snippet',
-					key: 'AIzaSyBbO9_N46Po8__zk9P-olWwE5RFCFFm5I0',
-					q: searchTerm
-				};
-				print("2")
-				$.getJSON(url, params, function (searchTerm) {
-					showResults(searchTerm);
-				});
-			}
-			function showResults(results) {
-				var html = "";
-				var entries = results.items;
-				print("3")
-				$.each(entries, function (index, value) {
-					var title = value.snippet.title;
-					var thumbnail = value.snippet.thumbnails.default.url;
-					html += '<p>' + title + '</p>';
-					html += '<img src="' + thumbnail + '">';
-				});
-				$('#search-results').html(html);
-			}
-		</script>
-		<form onSubmin="return showResults(results);" id="search-term">
-			Entry:<br>
-			<input id="query" type="text">
-			<br>
-			<input type="submit" value="Submit">
-		</form>
 		<!--Footer-->
 		<div class="footer">
 			<p>
