@@ -8,12 +8,13 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu|Bungee+Shade|Ranchers);
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 @import url(https://fonts.googleapis.com/css?family=Muli);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
 /*-------------------------
 	body
 --------------------------*/
 
-body, p, h3{
+body{
 	background-color: #212121;
 	color: #fff;
 	font-family: 'Ubuntu';}
@@ -49,16 +50,21 @@ body, p, h3{
 /*-------------------------
 	videos
 --------------------------*/
+
 #videos, #videos p, #videos h3 {
-list-style: none;
-margin:0;
-padding:15;
-}
+  list-style: none;
+  margin:0;
+  padding:15;
+	background-color: #212121;
+	color: #fff;
+  display: block;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+	font-family: 'Ubuntu';}
 
 #videos > li, #videos > li > .image{
   float:left;
-  margin-right:15px;
-}
+  margin-right:15px;}
 
 /*-------------------------
 	snip1217

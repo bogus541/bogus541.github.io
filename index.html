@@ -21,7 +21,7 @@
 			<li><a href="#">About</a></li>
 		</ul>
 		<div class="youtube">
-<script type="text/python">
+			<script type="text/python">
 from browser import document as doc
 from browser import ajax, html
 from urllib.parse import quote
@@ -49,10 +49,9 @@ def get(url):
     req.send()
 def search():
     get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + quote(input('Search For A Video:')) + '&type=video&key=AIzaSyAqR6xo2RuEiYDjp10UI3dPtiw-q7scJsI&maxResults=10&videoEmbeddable=True')
-doc["main"].html = '<ul class="snip1488" id="search"><li><a type="button" class="search" onclick="search()">Search</a></li></ul>'
 doc["search"].bind("click", search)
-</script>
-<pre id="main"></pre>
+			</script>
+			<pre id="main"><ul class="snip1488" id="search"><li><a type="button" class="search" onclick="search()">Search</a></li></ul></pre>
 		</div>
 		<!--Footer-->
 		<div class="footer">
