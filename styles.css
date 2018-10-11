@@ -146,7 +146,7 @@ body{
   bottom: 50%;}
 .snip1488 a {
   backface-visibility: hidden;
-  color: #e6e6e6;
+  color: rgba(255, 255, 255, 0.5);
   display: block;
   padding: 0.5em 1em;
   position: relative;
