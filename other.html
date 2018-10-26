@@ -11,6 +11,8 @@
 	<script src="brython.js"></script>
 	<script src="https://cdn.rawgit.com/brython-dev/brython/3.6.2/www/src/brython_stdlib.js"></script>
 	<link rel="stylesheet" href="styles.css">
+	<script>anchors = document.getElementById("linklist").getElementsByTagName("a"); for (a in anchors) { a.setAttribute("target", "_blank"); }
+	</script>
 </head>
 
 <body onload="brython()">
@@ -23,13 +25,13 @@
 			<li class="current"><a href="javascript:window.location.reload(true)">Other</a></li>
 		</ul>
 		<div class="youtube">
-			<ul style="list-style-type: none;">
-				<li><a href="https://pixlr.com/editor/" class="hvr-back-pulse">Pixlr</a></li>
-				<li><a href="http://google.github.io/liquidfun/" class="hvr-back-pulse">Liquid Fun</a></li>
-				<li><a href="https://www.curveball-game.com/" class="hvr-back-pulse">Curve Ball</a></li>
-				<li><a href="https://geoguessr.com" class="hvr-back-pulse">Geo Guessr</a></li>
-				<li><a href="http://dongs2.blogspot.com" class="hvr-back-pulse">DONG</a></li>
-				<li><a href="https://www.boredbutton.com" class="hvr-back-pulse">Bored Button</a></li>
+			<ul style="list-style-type: none;" class="pulse">
+<li><a href="https://pixlr.com/editor/" target="_blank">         Pixlr       </a></li>
+<li><a href="http://google.github.io/liquidfun/" target="_blank">Liquid Fun  </a></li>
+<li><a href="https://www.curveball-game.com/" target="_blank">   Curve Ball  </a></li>
+<li><a href="https://geoguessr.com" target="_blank">             Geo Guessr  </a></li>
+<li><a href="http://dongs2.blogspot.com" target="_blank">        DONG        </a></li>
+<li><a href="https://www.boredbutton.com" target="_blank">       Bored Button</a></li>
 			</ul>
 		</div>
 		<!--Footer-->
