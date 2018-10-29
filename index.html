@@ -1,18 +1,25 @@
 <!doctype html>
-
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>Clever | Applications</title>
     <link rel="icon" href="https://clever.com/favicon.ico" type="image/gif" sizes="16x16">
     <meta name="bogus541" content="bogus541">
+<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T4BNVC7');</script>
+<!-- End Google Tag Manager -->
     <script src="brython.js"></script>
     <script src="https://cdn.rawgit.com/brython-dev/brython/3.6.2/www/src/brython_stdlib.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-
 <body onload="brython({debug:0})">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4BNVC7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="content">
         <ul class="snip1217">
             <li class="current"><a href="javascript:window.location.reload(true)">Home</a></li>
@@ -64,12 +71,24 @@ def on_complete(req):
     window.searchi = searchi
     doc["main"].html = f'<ul id="videos">{"<br/>".join(videos)}</ul>'
 doc["main"].html = ''
-doc["main"].html = '<ul class="snip1488" id="searchv"><li><a type="button">Search For A Video</a></li></ul><ul class="snip1488" id="searchc"><li><a type="button">Search For A Channel</a></li></ul> <p>about\ncomming soon...</p>'
+doc["main"].html = '<ul class="snip1488" id="searchv"><li><a type="button">Search For A Video</a></li></ul><ul class="snip1488" id="searchc"><li><a type="button">Search For A Channel</a></li></ul>'
 doc["searchv"].bind("click", searchv)
 doc["searchc"].bind("click", searchc)
             </script>
-            <pre id="main"></i></pre>
+            <pre id="main"></pre>
         </div>
+        <div><about>
+            Welcome To
+            <a href="https://bogus541.github.io">Bogus541</a>
+            /
+            <a href="https://ndeogj.github.io">NDEogJ</a>
+            <br><br>
+            Expect more updates soon.
+            <br><br>
+            When I make changes you can see them early on the
+            <a href="beta.html">Beta Page</a>.
+            <br><br><br>
+        </about></div>
         <!--Footer-->
         <br>
         <div class="footer">
